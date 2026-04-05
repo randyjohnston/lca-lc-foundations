@@ -1,0 +1,11 @@
+node_modules/
+dist/
+build/
+.git/
+*.lock
+*.log
+coverage/
+*.min.js
+*.map
+__pycache__/
+.venv/
