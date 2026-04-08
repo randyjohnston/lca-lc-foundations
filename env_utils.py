@@ -10,6 +10,10 @@ import shutil
 import re
 from pathlib import Path
 
+from braintrust import init_logger
+import braintrust
+from braintrust_langchain import BraintrustCallbackHandler, set_global_handler
+
 
 # ========== EARLY PYTHON ENVIRONMENT DIAGNOSTICS ==========
 def check_python_executable_and_version():
@@ -581,3 +585,8 @@ if __name__ == "__main__":
 
     # Check packages
     doublecheck_pkgs(pyproject_path="pyproject.toml", verbose=True)
+    
+    # Setup logging - automatically captures all LangChain calls as traces
+
+    init_logger(project="My Project", api_key=os.getenv("BRAINTRUST_API_KEY"))
+    braintrust.auto_instrument()
